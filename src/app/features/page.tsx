@@ -119,7 +119,7 @@ export default function FeaturesPage() {
                     {feature.description}
                   </p>
                   <Link
-                    href="#"
+                    href={`/features/${feature.slug}`}
                     className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-vroom-ink hover:text-vroom-green-2 transition-colors"
                   >
                     Learn More

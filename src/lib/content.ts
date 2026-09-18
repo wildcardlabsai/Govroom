@@ -58,45 +58,53 @@ export type IconKey =
   | "complaint"
   | "disputeiq";
 
-export const CORE_FEATURES: { icon: IconKey; title: string; description: string }[] = [
+export const CORE_FEATURES: { icon: IconKey; title: string; slug: string; description: string }[] = [
   {
     icon: "shield",
     title: "Warranties",
+    slug: "warranties",
     description: "Create, manage and track warranties from one place.",
   },
   {
     icon: "clipboard",
     title: "Claims",
+    slug: "claims",
     description: "Handle claims quickly and keep customers informed.",
   },
   {
     icon: "users",
     title: "Customers",
+    slug: "customers",
     description: "Keep complete customer information and history together.",
   },
   {
     icon: "car",
     title: "Vehicles",
+    slug: "vehicles",
     description: "Keep vehicle information connected to everything that happens after the sale.",
   },
   {
     icon: "document",
     title: "Documents",
+    slug: "documents",
     description: "Store and access important documents when your team needs them.",
   },
   {
     icon: "chart",
     title: "Insights",
+    slug: "insights",
     description: "Understand your aftersales performance with useful information and reporting.",
   },
   {
     icon: "complaint",
     title: "Complaints",
+    slug: "complaints",
     description: "Manage customer complaints through a clear process.",
   },
   {
     icon: "disputeiq",
     title: "DisputeIQ",
+    slug: "disputeiq",
     description: "AI-assisted guidance for difficult aftersales situations.",
   },
 ];

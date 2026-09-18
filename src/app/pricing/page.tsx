@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
@@ -77,18 +76,23 @@ export default function PricingPage() {
       <section className="bg-white py-20 sm:py-28">
         <Container>
           <div className="mx-auto max-w-2xl rounded-2xl border border-vroom-line bg-vroom-navy p-10">
-            <Image
-              src="/images/vroom-logo.png"
-              alt="VROOM"
-              width={100}
-              height={28}
-              className="h-auto w-[100px] brightness-0 invert"
-            />
-            <p className="mt-5 text-lg font-semibold text-white">
-              Everything you need to manage your aftersales.
+            <p className="text-sm font-semibold uppercase tracking-wide text-vroom-green">
+              Pay per warranty
+            </p>
+            <div className="mt-4 flex items-baseline gap-2">
+              <span className="text-5xl font-bold text-white">£15</span>
+              <span className="text-base text-white/60">per warranty</span>
+            </div>
+            <p className="mt-3 text-sm text-white/50">
+              Your first 5 warranties are free — no card required.
             </p>
 
-            <ul className="mt-8 space-y-3">
+            <div className="my-8 h-px bg-white/10" />
+
+            <p className="mb-4 text-xs font-semibold uppercase tracking-wide text-white/40">
+              Everything included
+            </p>
+            <ul className="space-y-3">
               {FEATURES.map((feature) => (
                 <li key={feature} className="flex items-center gap-3 text-sm text-white/80">
                   <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-vroom-green text-vroom-ink">
@@ -103,7 +107,7 @@ export default function PricingPage() {
 
             <div className="mt-10 space-y-3">
               <Button href="/contact" variant="primary" className="w-full">
-                Get Started
+                Start Free
               </Button>
               <Button href="/contact" variant="outline-light" className="w-full">
                 Book a Demo
@@ -111,7 +115,7 @@ export default function PricingPage() {
             </div>
 
             <p className="mt-6 text-center text-xs text-white/50">
-              No long contracts. Built for UK dealers.
+              No monthly fee. No long contracts. Pay only when you create a warranty.
             </p>
           </div>
         </Container>
