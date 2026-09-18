@@ -56,6 +56,19 @@ const paths: Record<IconKey, React.ReactNode> = {
       <path d="M15 5h6v6" />
     </>
   ),
+  complaint: (
+    <>
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10Z" />
+      <path d="M12 8v3M12 14h.01" />
+    </>
+  ),
+  disputeiq: (
+    <>
+      <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Z" />
+      <path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3" />
+      <path d="M12 17h.01" />
+    </>
+  ),
 };
 
 export function Icon({

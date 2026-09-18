@@ -1,72 +1,86 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { PageHero } from "@/components/sections/PageHero";
 import { ContactForm } from "@/components/forms/ContactForm";
-import { Button } from "@/components/ui/Button";
 
 export const metadata: Metadata = {
-  title: "Contact",
+  title: "Contact | Book a Demo | VROOM",
   description:
-    "Get in touch with VROOM to see our dealer aftersales software in action, ask a question, or book a demo.",
+    "See what VROOM could do for your dealership. Book a demo or get in touch.",
   alternates: { canonical: "/contact" },
 };
 
 const CONTACT_DETAILS = [
-  { label: "Email", value: "hello@govroom.co.uk", href: "mailto:hello@govroom.co.uk" },
-  { label: "Phone", value: "+44 (0)20 0000 0000", href: "tel:+442000000000" },
+  {
+    label: "Email",
+    value: "matt@govroom.co.uk",
+    href: "mailto:matt@govroom.co.uk",
+  },
+  {
+    label: "Phone",
+    value: "07377 324983",
+    href: "tel:+4407377324983",
+  },
+  {
+    label: "Website",
+    value: "www.govroom.co.uk",
+    href: "https://www.govroom.co.uk",
+  },
 ];
 
 export default function ContactPage() {
   return (
     <>
       <PageHero
-        eyebrow="Contact"
-        title="Let's talk aftersales."
-        description="Have a question, want to see VROOM in action, or just want to talk through how it could fit your dealership? We'd like to hear from you."
+        eyebrow="LET'S TALK"
+        title="See what VROOM could do for your dealership."
+        description="Want to see the platform? Have a question? Or simply want to understand whether VROOM is right for your dealership? Let's talk."
       />
 
-      <section className="bg-white py-20 sm:py-24">
+      <section className="bg-white py-20 sm:py-28">
         <Container>
-          <div className="grid grid-cols-1 gap-14 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
+          <div className="grid grid-cols-1 gap-14 lg:grid-cols-2 lg:gap-20">
+            {/* Left column */}
             <div>
-              <h2 className="text-xl font-semibold text-vroom-ink">Get in touch</h2>
-              <p className="mt-3 max-w-sm text-sm leading-relaxed text-vroom-grey-700">
-                Fill in the form and a member of the VROOM team will get back to you — or reach us
-                directly using the details below.
+              <Image
+                src="/images/vroom-logo.png"
+                alt="VROOM"
+                width={140}
+                height={40}
+                className="h-auto w-[140px]"
+              />
+              <p className="mt-4 text-xs font-semibold uppercase tracking-[0.14em] text-vroom-grey-500">
+                Dealer Warranties. Simplified.
               </p>
 
-              <div className="mt-8 space-y-4">
+              <div className="mt-10 space-y-5">
                 {CONTACT_DETAILS.map((item) => (
                   <a
                     key={item.label}
                     href={item.href}
-                    className="flex items-center justify-between rounded-xl border border-vroom-grey-300/70 px-5 py-4 transition-colors hover:border-vroom-green/50"
+                    className="flex items-center gap-3 text-sm text-vroom-ink transition-colors hover:text-vroom-green-2"
                   >
-                    <div>
-                      <p className="text-xs font-semibold uppercase tracking-wide text-vroom-grey-500">
-                        {item.label}
-                      </p>
-                      <p className="mt-1 text-sm font-medium text-vroom-ink">{item.value}</p>
-                    </div>
-                    <svg viewBox="0 0 24 24" className="h-4 w-4 text-vroom-grey-400" fill="none" stroke="currentColor" strokeWidth={2}>
-                      <path d="M9 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-vroom-green">
+                      <svg viewBox="0 0 24 24" className="h-4 w-4 text-vroom-ink" fill="none" stroke="currentColor" strokeWidth={2}>
+                        <path d="M5 12.5 9.5 17 19 7" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </span>
+                    <span className="font-medium">{item.value}</span>
                   </a>
                 ))}
               </div>
 
-              <div className="mt-8 rounded-xl border border-vroom-grey-300/70 bg-vroom-mist p-6">
-                <p className="text-sm font-semibold text-vroom-ink">Prefer to see it live?</p>
-                <p className="mt-1 text-sm text-vroom-grey-700">
-                  Book a short demo and we&apos;ll walk you through VROOM.
-                </p>
-                <Button href="/contact" variant="secondary" className="mt-4">
-                  Book a Demo
-                </Button>
-              </div>
+              <p className="mt-10 text-sm text-vroom-grey-700">
+                We typically respond within 1 business day.
+              </p>
             </div>
 
-            <div className="rounded-2xl border border-vroom-grey-300/70 bg-white p-6 sm:p-8">
+            {/* Right column */}
+            <div>
+              <h2 className="mb-6 text-xl font-semibold text-vroom-ink">
+                Send us a message
+              </h2>
               <ContactForm />
             </div>
           </div>

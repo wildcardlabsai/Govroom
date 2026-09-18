@@ -93,7 +93,7 @@ export function Navbar() {
 
         <div className="hidden items-center gap-3 lg:flex">
           <Link
-            href="/contact"
+            href="/login"
             className="text-sm font-medium text-white/80 transition-colors hover:text-white"
           >
             Login
@@ -150,7 +150,7 @@ export function Navbar() {
             ))}
           </nav>
           <div className="mt-5 flex flex-col gap-3">
-            <Button href="/contact" variant="outline-light" className="w-full">
+            <Button href="/login" variant="outline-light" className="w-full">
               Login
             </Button>
             <Button href="/contact" variant="primary" className="w-full">

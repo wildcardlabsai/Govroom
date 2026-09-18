@@ -1,7 +1,7 @@
 export const SITE = {
   name: "VROOM",
   domain: "GoVroom.co.uk",
-  tagline: "DEALER AFTERSALES. SIMPLIFIED.",
+  tagline: "DEALER WARRANTIES. SIMPLIFIED.",
   description:
     "VROOM helps UK car dealers manage warranties, claims, customers and everything in between — so you can save time, reduce risk and keep your customers on the road.",
 };
@@ -15,8 +15,8 @@ export const NAV_LINKS = [
 
 export const RESOURCES_LINKS = [
   { label: "Resources", href: "/resources", description: "Everything in one hub" },
+  { label: "How It Works", href: "/how-it-works", description: "From sale to resolution" },
   { label: "Blog", href: "/blog", description: "News and dealer insight" },
-  { label: "Guides", href: "/resources#guides", description: "Practical aftersales guides" },
   { label: "FAQs", href: "/faq", description: "Common questions, answered" },
   { label: "Contact", href: "/contact", description: "Talk to the VROOM team" },
 ] as const;
@@ -25,16 +25,18 @@ export const FOOTER_LINKS = {
   product: [
     { label: "Features", href: "/features" },
     { label: "Pricing", href: "/pricing" },
-    { label: "Who It's For", href: "/who-its-for" },
+    { label: "How It Works", href: "/how-it-works" },
   ],
   company: [
     { label: "About", href: "/about" },
+    { label: "Who It's For", href: "/who-its-for" },
+    { label: "Customers", href: "/customers" },
     { label: "Contact", href: "/contact" },
   ],
   resources: [
     { label: "Blog", href: "/blog" },
-    { label: "Guides", href: "/resources#guides" },
-    { label: "FAQs", href: "/faq" },
+    { label: "FAQ", href: "/faq" },
+    { label: "Resources", href: "/resources" },
   ],
   legal: [
     { label: "Privacy", href: "/privacy" },
@@ -52,55 +54,66 @@ export type IconKey =
   | "spark"
   | "check"
   | "clock"
-  | "trend";
+  | "trend"
+  | "complaint"
+  | "disputeiq";
 
 export const CORE_FEATURES: { icon: IconKey; title: string; description: string }[] = [
   {
     icon: "shield",
     title: "Warranties",
-    description: "Create, manage and track warranties with ease, from activation to expiry.",
+    description: "Create, manage and track warranties from one place.",
   },
   {
     icon: "clipboard",
     title: "Claims",
-    description: "Handle claims quickly and keep customers informed at every stage.",
+    description: "Handle claims quickly and keep customers informed.",
   },
   {
     icon: "users",
     title: "Customers",
-    description: "Store customer details and their complete aftersales history in one place.",
+    description: "Keep complete customer information and history together.",
   },
   {
     icon: "car",
     title: "Vehicles",
-    description: "Keep all vehicle information organised and easy to find when it matters.",
-  },
-  {
-    icon: "chart",
-    title: "Insights",
-    description: "Get a clearer view of your aftersales performance with real data.",
+    description: "Keep vehicle information connected to everything that happens after the sale.",
   },
   {
     icon: "document",
     title: "Documents",
-    description: "Store and access documents whenever you or your customers need them.",
+    description: "Store and access important documents when your team needs them.",
+  },
+  {
+    icon: "chart",
+    title: "Insights",
+    description: "Understand your aftersales performance with useful information and reporting.",
+  },
+  {
+    icon: "complaint",
+    title: "Complaints",
+    description: "Manage customer complaints through a clear process.",
+  },
+  {
+    icon: "disputeiq",
+    title: "DisputeIQ",
+    description: "AI-assisted guidance for difficult aftersales situations.",
   },
 ];
 
 export const BENEFITS = [
-  "Easy to use",
-  "Designed for the motor trade",
   "Save time and reduce admin",
-  "Improve customer satisfaction",
-  "Clear, real-time insights",
+  "Keep customers informed",
+  "Reduce risk",
+  "Make smarter decisions",
 ];
 
 export const WORKFLOW_STEPS = [
-  { label: "Sale", detail: "Vehicle sold" },
-  { label: "Warranty", detail: "Cover activated" },
-  { label: "Claim", detail: "Issue reported" },
-  { label: "Customer", detail: "Kept informed" },
-  { label: "Resolution", detail: "Sorted and closed" },
+  { label: "Create", detail: "Add the customer, vehicle and warranty" },
+  { label: "Manage", detail: "Keep information and documents together" },
+  { label: "Handle", detail: "Manage claims, repairs and complaints" },
+  { label: "Resolve", detail: "Keep customers updated with a complete record" },
+  { label: "Understand", detail: "Use insights to improve your operation" },
 ] as const;
 
 export const TESTIMONIALS = [
@@ -124,41 +137,54 @@ export const TESTIMONIALS = [
   },
 ];
 
-export const DEALER_LOGOS = ["REO", "GMC", "OB Motors", "Empressive", "TC Wales"];
+export const DEALER_LOGOS = ["Autocentre", "Riverside Motors", "Peak Motors", "Grange Autos"];
 
 export const WHO_ITS_FOR = [
   {
     title: "Independent Dealers",
     description:
-      "Run aftersales without a back office. VROOM gives independent dealers a simple, organised way to manage warranties and claims without extra headcount.",
+      "Keep warranties, claims, customers and documents organised without unnecessary complexity.",
   },
   {
-    title: "Growing Motor Businesses",
+    title: "Growing Dealerships",
     description:
-      "As volumes grow, spreadsheets stop working. VROOM scales with your business so aftersales stays under control as you add stock and staff.",
+      "As the business grows, VROOM provides the structure to manage more aftersales activity without creating more admin.",
   },
   {
     title: "Dealer Groups",
     description:
-      "Get visibility across multiple sites. VROOM brings warranties, claims and customer records together so every site works the same way.",
+      "Give multiple sites a consistent way to manage aftersales while keeping dealer information appropriately separated.",
+  },
+  {
+    title: "Multi-Site Operations",
+    description:
+      "Create a consistent aftersales process across locations.",
   },
 ] as const;
 
 export const FAQ_CATEGORIES = [
   {
-    category: "VROOM",
+    category: "General",
     items: [
       {
         q: "What is VROOM?",
-        a: "VROOM is an aftersales platform built for UK car dealers. It brings warranties, claims, customers, vehicles and documents together in one place, so aftersales is easier to manage and easier to stay on top of.",
+        a: "VROOM is an aftersales platform built for UK car dealers. It brings warranties, claims, customers, vehicles and documents together in one place, so aftersales is easier to manage and stay on top of.",
       },
       {
-        q: "Who is VROOM built for?",
+        q: "Who is VROOM for?",
         a: "VROOM is designed for independent dealers, growing motor businesses and dealer groups who want a simpler, more organised way to run aftersales.",
       },
       {
-        q: "Does VROOM replace my current systems?",
-        a: "VROOM is focused specifically on aftersales — warranties, claims, customers and documents — rather than being a full dealer management system. It's designed to sit alongside your existing sales process.",
+        q: "Is VROOM a DMS?",
+        a: "No. VROOM focuses specifically on dealer aftersales rather than attempting to replace a full dealership management system. It's designed to sit alongside your existing sales process.",
+      },
+      {
+        q: "How quickly can we get started?",
+        a: "Most dealers can get up and running quickly. The VROOM team will guide you through setup so your data and team are ready from day one.",
+      },
+      {
+        q: "Can I see a demo?",
+        a: "Yes — you can book a demo at any time and see VROOM working before making a decision.",
       },
     ],
   },
@@ -166,12 +192,20 @@ export const FAQ_CATEGORIES = [
     category: "Warranties",
     items: [
       {
-        q: "Can I manage different warranty products in VROOM?",
+        q: "Can I create warranties in VROOM?",
         a: "Yes. VROOM is built to handle a range of warranty products and cover types, so you can manage everything from one place.",
       },
       {
-        q: "Will I be able to see which warranties are expiring soon?",
-        a: "Yes, VROOM gives you a clear view of upcoming expiries so you can plan renewals and follow-ups ahead of time.",
+        q: "Can I generate warranty certificates?",
+        a: "Yes, VROOM can generate warranty documentation for your customers.",
+      },
+      {
+        q: "Can I customise warranty documents?",
+        a: "Yes, warranty documents can be configured to match your dealership's branding and requirements.",
+      },
+      {
+        q: "Can customers see their warranty?",
+        a: "Yes. Customers can view their warranty details through the VROOM customer portal.",
       },
     ],
   },
@@ -179,12 +213,24 @@ export const FAQ_CATEGORIES = [
     category: "Claims",
     items: [
       {
-        q: "How does claims handling work in VROOM?",
+        q: "How does the claims system work?",
         a: "Claims can be logged, tracked and updated through clear statuses, so you and your customer always know where things stand.",
       },
       {
-        q: "Can customers track their own claim status?",
-        a: "Yes. Customers can view claim status and updates through their own VROOM portal, reducing inbound calls and emails.",
+        q: "Can customers submit claims?",
+        a: "Yes. Customers can submit claims through the customer portal, which are then visible to your team for review.",
+      },
+      {
+        q: "Can I upload evidence?",
+        a: "Yes. Photos, documents and other evidence can be attached to claims for a complete record.",
+      },
+      {
+        q: "Can I assign a repairer?",
+        a: "Yes. Repairers can be assigned to claims so your team knows who is handling the work.",
+      },
+      {
+        q: "Can I track repair costs?",
+        a: "Yes. Repair costs can be recorded against claims to give you visibility over your aftersales spend.",
       },
     ],
   },
@@ -192,34 +238,50 @@ export const FAQ_CATEGORIES = [
     category: "Customers",
     items: [
       {
-        q: "What customer information does VROOM store?",
-        a: "VROOM stores customer contact details along with their vehicle, warranty and claims history, so your team has full context in one view.",
+        q: "Can customers access their own information?",
+        a: "Yes. The VROOM customer portal gives customers access to their warranty, claims and document information.",
+      },
+      {
+        q: "What can customers see?",
+        a: "Customers can view their warranty details, claim status, uploaded documents and key aftersales information.",
+      },
+      {
+        q: "Can customers upload documents?",
+        a: "Yes. Customers can upload documents and evidence directly through the portal.",
       },
     ],
   },
   {
-    category: "Pricing",
+    category: "Security",
     items: [
       {
-        q: "How is VROOM priced?",
-        a: "Pricing is based on dealership size and needs. See the Pricing page for an overview, or get in touch for a plan tailored to your business.",
+        q: "How is dealer data protected?",
+        a: "VROOM uses industry-standard security practices to protect dealer and customer data.",
       },
       {
-        q: "Is there a contract or can I pay monthly?",
-        a: "We aim to keep things straightforward for dealers. Full commercial details are confirmed when you speak with the VROOM team.",
+        q: "Can another dealership see our information?",
+        a: "No. Each dealership's data is completely separate. There is no cross-visibility between dealerships.",
+      },
+      {
+        q: "Can staff have different permissions?",
+        a: "Yes. VROOM supports role-based access so you can control what each team member can see and do.",
       },
     ],
   },
   {
-    category: "Getting Started",
+    category: "DisputeIQ",
     items: [
       {
-        q: "How long does it take to get set up?",
-        a: "Most dealers can get up and running quickly. The VROOM team will guide you through set up so your data and team are ready from day one.",
+        q: "What is DisputeIQ?",
+        a: "DisputeIQ is an AI-assisted feature that helps dealers organise the facts, understand the situation and prepare a clearer response when aftersales situations become complicated.",
       },
       {
-        q: "Can I book a demo before signing up?",
-        a: "Yes — you can book a demo at any time and see VROOM working before making a decision.",
+        q: "Does DisputeIQ provide legal advice?",
+        a: "No. DisputeIQ provides guidance to help dealers organise information and understand their position. It does not replace professional legal advice.",
+      },
+      {
+        q: "Can DisputeIQ make decisions for dealers?",
+        a: "No. DisputeIQ is a guidance tool. All decisions remain with the dealer.",
       },
     ],
   },
@@ -231,7 +293,7 @@ export const BLOG_POSTS = [
     title: "Why aftersales is the next battleground for UK dealers",
     excerpt:
       "Margins on the forecourt are tighter than ever. Here's why the dealers pulling ahead are the ones investing in what happens after the sale.",
-    category: "Strategy",
+    category: "Aftersales",
     date: "2026-08-01",
     readTime: "6 min read",
   },
@@ -240,7 +302,7 @@ export const BLOG_POSTS = [
     title: "Getting warranty claims out of the spreadsheet",
     excerpt:
       "Spreadsheets get dealers started, but they don't scale. A practical look at when — and how — to move on.",
-    category: "Operations",
+    category: "Warranties",
     date: "2026-07-18",
     readTime: "5 min read",
   },
@@ -258,7 +320,7 @@ export const BLOG_POSTS = [
     title: "Five aftersales metrics worth tracking every month",
     excerpt:
       "From warranty exposure to claim resolution time — the numbers that tell you how healthy your aftersales operation really is.",
-    category: "Insights",
+    category: "Dealer Operations",
     date: "2026-06-09",
     readTime: "7 min read",
   },

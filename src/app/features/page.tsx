@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
+import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Reveal } from "@/components/ui/Reveal";
+import { Icon } from "@/components/ui/Icon";
 import { PageHero } from "@/components/sections/PageHero";
 import { CTASection } from "@/components/sections/CTASection";
 import { LaptopFrame } from "@/components/product/LaptopFrame";
 import { DashboardMockup } from "@/components/product/DashboardMockup";
 import { AIAssistantMockup } from "@/components/product/AIAssistantMockup";
-import { CustomerPortalMockup } from "@/components/product/CustomerPortalMockup";
-import { FeaturePanel } from "@/components/product/FeaturePanel";
-import type { IconKey } from "@/lib/content";
+import { CORE_FEATURES } from "@/lib/content";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Features",
@@ -17,230 +19,167 @@ export const metadata: Metadata = {
   alternates: { canonical: "/features" },
 };
 
-type Visual =
-  | { kind: "dashboard" }
-  | { kind: "ai" }
-  | { kind: "portal" }
-  | { kind: "panel"; icon: IconKey; title: string; rows: { label: string; value: string; tone?: "green" | "neutral" }[] };
-
-const SECTIONS: {
+const DETAIL_SECTIONS: {
   id: string;
-  eyebrow: string;
-  title: string;
-  description: string;
-  benefits: string[];
-  visual: Visual;
+  heading: string;
+  copy: string;
+  bg: string;
+  tone: "light" | "dark";
+  visual: "dashboard" | "ai" | "placeholder";
 }[] = [
   {
     id: "warranties",
-    eyebrow: "Warranties",
-    title: "Create and manage warranties without the paper trail.",
-    description:
-      "VROOM keeps every warranty in one organised place — from activation through to expiry — so you always know exactly what's covered and for how long.",
-    benefits: [
-      "Create and issue warranties in minutes",
-      "Track cover, terms and expiry dates",
-      "See upcoming expiries before they happen",
-      "Link warranties directly to the vehicle and customer",
-      "Keep a full history for every policy",
-    ],
-    visual: {
-      kind: "panel",
-      icon: "shield",
-      title: "Warranty Overview",
-      rows: [
-        { label: "Active warranties", value: "132", tone: "green" },
-        { label: "Expiring in 30 days", value: "9" },
-        { label: "Average cover length", value: "24 months" },
-        { label: "Warranty exposure", value: "£48,320" },
-      ],
-    },
+    heading: "Keep every warranty under control.",
+    copy: "Create warranties, connect them to the right vehicle and customer, generate documentation and keep track of what is active, expired or coming up for renewal.",
+    bg: "bg-white",
+    tone: "light",
+    visual: "dashboard",
   },
   {
     id: "claims",
-    eyebrow: "Claims",
-    title: "Handle claims quickly and keep everyone in the loop.",
-    description:
-      "Log a claim, track its progress and resolve it — all without digging through emails and spreadsheets. VROOM gives your team a clear claims process from first report to resolution.",
-    benefits: [
-      "Log claims in seconds with the right detail captured",
-      "Track claims through clear, consistent statuses",
-      "Reduce back-and-forth with customers and suppliers",
-      "See claims trends across your dealership",
-    ],
-    visual: { kind: "dashboard" },
+    heading: "Make claims easier to manage.",
+    copy: "Keep claim information, evidence, repair details and customer updates together so your team always knows what is happening.",
+    bg: "bg-vroom-mist",
+    tone: "light",
+    visual: "placeholder",
   },
   {
     id: "customers",
-    eyebrow: "Customers",
-    title: "One record for every customer, not five.",
-    description:
-      "VROOM stores customer details alongside their vehicle, warranty and claims history, so your team always has full context — whoever picks up the phone.",
-    benefits: [
-      "Store customer contact details securely",
-      "See full aftersales history in one view",
-      "Understand which customers may need attention",
-      "Keep communication organised and traceable",
-    ],
-    visual: {
-      kind: "panel",
-      icon: "users",
-      title: "Customer Record",
-      rows: [
-        { label: "Active customers", value: "1,204", tone: "green" },
-        { label: "Open enquiries", value: "5" },
-        { label: "Repeat customers", value: "31%" },
-        { label: "Average response time", value: "2.4 hrs" },
-      ],
-    },
+    heading: "One customer record. Everything connected.",
+    copy: "See the customer’s vehicle, warranty, claims, documents and aftersales history in one place.",
+    bg: "bg-white",
+    tone: "light",
+    visual: "placeholder",
   },
   {
     id: "vehicles",
-    eyebrow: "Vehicles",
-    title: "Every vehicle, and its full aftersales story.",
-    description:
-      "Keep vehicle information organised and easy to find — spec, history, warranty status and claims — all connected to the customer who owns it.",
-    benefits: [
-      "Store vehicle details and specification",
-      "Track warranty and claims history per vehicle",
-      "Find any vehicle quickly by reg, customer or stock number",
-    ],
-    visual: {
-      kind: "panel",
-      icon: "car",
-      title: "Vehicle Record",
-      rows: [
-        { label: "Vehicles under cover", value: "132", tone: "green" },
-        { label: "Claims this year", value: "28" },
-        { label: "Average mileage", value: "41,200" },
-        { label: "Cover status", value: "Active", tone: "green" },
-      ],
-    },
+    heading: "Keep the vehicle at the centre.",
+    copy: "Connect the vehicle to the warranty, customer, claims and documents that follow it after the sale.",
+    bg: "bg-vroom-mist",
+    tone: "light",
+    visual: "placeholder",
   },
   {
-    id: "documents",
-    eyebrow: "Documents",
-    title: "Every document, exactly where it should be.",
-    description:
-      "Store warranty terms, claim evidence, invoices and customer paperwork in one secure place — accessible whenever you or your customer need them.",
-    benefits: [
-      "Store documents against the right customer, vehicle or claim",
-      "Give customers self-service access to their own documents",
-      "Stop chasing paperwork over email",
-    ],
-    visual: {
-      kind: "panel",
-      icon: "document",
-      title: "Documents",
-      rows: [
-        { label: "Documents stored", value: "3,482", tone: "green" },
-        { label: "Uploaded this month", value: "214" },
-        { label: "Shared with customers", value: "1,102" },
-        { label: "Storage used", value: "Well within limits" },
-      ],
-    },
-  },
-  {
-    id: "insights",
-    eyebrow: "Insights",
-    title: "A clear read on how aftersales is really performing.",
-    description:
-      "See warranty exposure, claims trends and customer activity in real data — so decisions about aftersales are based on what's actually happening.",
-    benefits: [
-      "Track claims volume and resolution time",
-      "Monitor warranty exposure across your book",
-      "Spot trends before they become problems",
-    ],
-    visual: { kind: "dashboard" },
-  },
-  {
-    id: "ai-assistance",
-    eyebrow: "AI Assistance",
-    title: "Useful guidance when you need it, not a chatbot for its own sake.",
-    description:
-      "From understanding a customer complaint to preparing a considered response, VROOM's AI assistant gives your team a starting point grounded in your warranty terms.",
-    benefits: [
-      "Get clarity on customer issues quickly",
-      "Generate response guidance grounded in your terms",
-      "Save time on first drafts and admin",
-      "Keep the final decision with your team",
-    ],
-    visual: { kind: "ai" },
+    id: "disputeiq",
+    heading: "When things get complicated, know what to do next.",
+    copy: "DisputeIQ provides AI-assisted guidance to help dealers organise the facts, understand the situation and prepare a clearer response.",
+    bg: "bg-vroom-ink",
+    tone: "dark",
+    visual: "ai",
   },
 ];
+
+function PlaceholderPanel({ dark = false }: { dark?: boolean }) {
+  return (
+    <div
+      className={`flex h-72 items-center justify-center rounded-2xl border ${
+        dark
+          ? "border-vroom-line bg-white/5"
+          : "border-vroom-grey-300/70 bg-vroom-mist/50"
+      }`}
+    >
+      <span
+        className={`text-sm font-medium ${
+          dark ? "text-white/20" : "text-vroom-grey-500"
+        }`}
+      >
+        Product UI
+      </span>
+    </div>
+  );
+}
 
 export default function FeaturesPage() {
   return (
     <>
       <PageHero
-        eyebrow="Features"
-        title="Everything your aftersales team needs."
-        description="VROOM brings warranties, claims, customers, vehicles, documents and insights into one platform — built specifically for how UK dealers actually work."
+        eyebrow="THE PLATFORM"
+        title="Everything you need for a stronger aftersales operation."
+        description="VROOM brings the key parts of your aftersales operation together so your team can spend less time chasing information and more time looking after customers."
       />
 
-      {SECTIONS.map((section, i) => {
-        const dark = i % 2 === 1;
+      {/* Feature grid */}
+      <section className="bg-white py-20 sm:py-28">
+        <Container>
+          <SectionHeading
+            title="Built around what matters after the sale."
+            align="center"
+          />
+          <div className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {CORE_FEATURES.map((feature, i) => (
+              <Reveal key={feature.title} delay={i * 60}>
+                <div className="group rounded-2xl border border-vroom-grey-300/70 bg-white p-6 transition-all duration-300 hover:-translate-y-1 hover:border-vroom-green/50 hover:shadow-[0_20px_40px_-24px_rgba(6,9,10,0.25)]">
+                  <div className="mb-5 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-vroom-ink text-vroom-green transition-colors duration-300 group-hover:bg-vroom-green group-hover:text-vroom-ink">
+                    <Icon name={feature.icon} className="h-5 w-5" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-vroom-ink">
+                    {feature.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-vroom-grey-700">
+                    {feature.description}
+                  </p>
+                  <Link
+                    href="#"
+                    className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-vroom-ink hover:text-vroom-green-2 transition-colors"
+                  >
+                    Learn More
+                    <span aria-hidden="true">&rarr;</span>
+                  </Link>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* Feature detail sections */}
+      {DETAIL_SECTIONS.map((section, i) => {
+        const dark = section.tone === "dark";
+        const imageFirst = i % 2 === 1;
         return (
           <section
             key={section.id}
             id={section.id}
-            className={`py-20 sm:py-24 ${dark ? "bg-vroom-navy-2" : "bg-white"}`}
+            className={`py-20 sm:py-28 ${section.bg}`}
           >
             <Container>
               <div
                 className={`grid grid-cols-1 items-center gap-14 lg:grid-cols-2 lg:gap-16 ${
-                  i % 2 === 1 ? "lg:[&>*:first-child]:order-2" : ""
+                  imageFirst ? "lg:[&>*:first-child]:order-2" : ""
                 }`}
               >
-                <div>
-                  <Badge tone={dark ? "dark" : "light"} className="mb-5">
-                    {section.eyebrow}
-                  </Badge>
-                  <h2
-                    className={`text-balance text-3xl font-bold tracking-tight sm:text-4xl ${
-                      dark ? "text-white" : "text-vroom-ink"
-                    }`}
-                  >
-                    {section.title}
-                  </h2>
-                  <p
-                    className={`mt-5 max-w-md text-base leading-relaxed ${
-                      dark ? "text-white/65" : "text-vroom-grey-700"
-                    }`}
-                  >
-                    {section.description}
-                  </p>
-                  <ul className="mt-7 space-y-3">
-                    {section.benefits.map((benefit) => (
-                      <li
-                        key={benefit}
-                        className={`flex items-start gap-3 text-sm sm:text-base ${
-                          dark ? "text-white/75" : "text-vroom-grey-700"
-                        }`}
-                      >
-                        <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-vroom-green text-vroom-ink">
-                          <svg viewBox="0 0 24 24" className="h-3 w-3" fill="none" stroke="currentColor" strokeWidth={2.5}>
-                            <path d="M5 12.5 9.5 17 19 7" strokeLinecap="round" strokeLinejoin="round" />
-                          </svg>
-                        </span>
-                        {benefit}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                <Reveal>
+                  <div>
+                    <h2
+                      className={`text-balance text-3xl font-bold tracking-tight sm:text-4xl ${
+                        dark ? "text-white" : "text-vroom-ink"
+                      }`}
+                    >
+                      {section.heading}
+                    </h2>
+                    <p
+                      className={`mt-5 max-w-md text-base leading-relaxed ${
+                        dark ? "text-white/65" : "text-vroom-grey-700"
+                      }`}
+                    >
+                      {section.copy}
+                    </p>
+                  </div>
+                </Reveal>
 
-                <div>
-                  {section.visual.kind === "dashboard" && (
-                    <LaptopFrame>
-                      <DashboardMockup />
-                    </LaptopFrame>
-                  )}
-                  {section.visual.kind === "ai" && <AIAssistantMockup />}
-                  {section.visual.kind === "portal" && <CustomerPortalMockup />}
-                  {section.visual.kind === "panel" && (
-                    <FeaturePanel icon={section.visual.icon} title={section.visual.title} rows={section.visual.rows} />
-                  )}
-                </div>
+                <Reveal delay={120}>
+                  <div>
+                    {section.visual === "dashboard" && (
+                      <LaptopFrame>
+                        <DashboardMockup />
+                      </LaptopFrame>
+                    )}
+                    {section.visual === "ai" && <AIAssistantMockup />}
+                    {section.visual === "placeholder" && (
+                      <PlaceholderPanel dark={dark} />
+                    )}
+                  </div>
+                </Reveal>
               </div>
             </Container>
           </section>
@@ -248,8 +187,8 @@ export default function FeaturesPage() {
       })}
 
       <CTASection
-        title="See VROOM working for your dealership."
-        description="Get started with VROOM, or book a demo and we'll walk you through it."
+        title="Everything after the sale. In one place."
+        description="Join modern dealers who are simplifying aftersales."
       />
     </>
   );
