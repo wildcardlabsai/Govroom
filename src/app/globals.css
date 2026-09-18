@@ -2,7 +2,23 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0b0f10;
+
+  /* VROOM brand tokens */
+  --vroom-ink: #06090a;       /* near-black automotive base */
+  --vroom-navy: #0c1315;      /* deep charcoal-navy */
+  --vroom-navy-2: #101a1c;
+  --vroom-line: #1e2b2d;      /* hairline on dark */
+  --vroom-green: #1fd693;     /* primary accent */
+  --vroom-green-2: #14b881;   /* deeper accent for gradients */
+  --vroom-green-soft: #e6fbf3;/* light accent tint */
+  --vroom-mist: #f5f7f6;      /* light section background */
+  --vroom-paper: #ffffff;
+  --vroom-grey-900: #10161a;
+  --vroom-grey-700: #4b5760;
+  --vroom-grey-500: #7a8790;
+  --vroom-grey-300: #d6dedb;
+  --vroom-grey-100: #eef2f0;
 }
 
 @theme inline {
@@ -10,17 +26,65 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-vroom-ink: var(--vroom-ink);
+  --color-vroom-navy: var(--vroom-navy);
+  --color-vroom-navy-2: var(--vroom-navy-2);
+  --color-vroom-line: var(--vroom-line);
+  --color-vroom-green: var(--vroom-green);
+  --color-vroom-green-2: var(--vroom-green-2);
+  --color-vroom-green-soft: var(--vroom-green-soft);
+  --color-vroom-mist: var(--vroom-mist);
+  --color-vroom-paper: var(--vroom-paper);
+  --color-vroom-grey-900: var(--vroom-grey-900);
+  --color-vroom-grey-700: var(--vroom-grey-700);
+  --color-vroom-grey-500: var(--vroom-grey-500);
+  --color-vroom-grey-300: var(--vroom-grey-300);
+  --color-vroom-grey-100: var(--vroom-grey-100);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+::selection {
+  background: var(--vroom-green);
+  color: var(--vroom-ink);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+/* Subtle reveal-on-scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Automotive dark texture: soft radial glow + fine grid */
+.automotive-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+.glow-green {
+  background: radial-gradient(50% 50% at 50% 50%, rgba(31, 214, 147, 0.35) 0%, rgba(31, 214, 147, 0) 70%);
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 28s linear infinite;
 }
