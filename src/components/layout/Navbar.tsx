@@ -123,7 +123,7 @@ export function Navbar() {
       </div>
 
       {mobileOpen && (
-        <div className="border-t border-white/10 bg-vroom-ink px-5 pb-8 pt-4 lg:hidden">
+        <div className="max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-white/10 bg-vroom-ink px-5 pb-8 pt-4 lg:hidden">
           <nav className="flex flex-col gap-1" aria-label="Mobile">
             {NAV_LINKS.map((link) => (
               <Link
