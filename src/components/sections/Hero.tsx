@@ -1,7 +1,7 @@
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
-import { AutomotivePanel } from "@/components/ui/AutomotivePanel";
 import { SITE } from "@/lib/content";
 
 const TRUST_POINTS: { icon: "shield" | "clock" | "trend"; label: string }[] = [
@@ -13,7 +13,30 @@ const TRUST_POINTS: { icon: "shield" | "clock" | "trend"; label: string }[] = [
 export function Hero() {
   return (
     <section className="relative overflow-hidden bg-vroom-ink pb-16 pt-14 sm:pb-20 sm:pt-16 lg:pb-28 lg:pt-10">
-      <AutomotivePanel />
+      {/* Background hero images */}
+      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+        <Image
+          src="/images/hero-mobile.png"
+          alt=""
+          fill
+          priority
+          className="object-cover object-right-top md:hidden"
+          sizes="100vw"
+        />
+        <Image
+          src="/images/hero-desktop.png"
+          alt=""
+          fill
+          priority
+          className="hidden object-cover object-right md:block"
+          sizes="100vw"
+        />
+        {/* Dark overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-vroom-ink via-vroom-ink/85 to-vroom-ink/30 lg:to-transparent" />
+        <div className="absolute inset-0 bg-vroom-ink/40 md:bg-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-vroom-ink to-transparent" />
+      </div>
+
       <Container className="relative">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-8">
           <div className="max-w-xl">
@@ -50,16 +73,7 @@ export function Hero() {
             </div>
           </div>
 
-          <div className="relative hidden lg:block lg:h-[420px]" aria-hidden="true">
-            <div className="absolute right-4 top-0 rotate-[-6deg] font-serif text-sm italic text-white/50">
-              Keep Dealers Moving
-            </div>
-            <div className="absolute bottom-6 right-0 text-right text-[11px] font-semibold uppercase tracking-[0.16em] text-white/35">
-              Stronger dealerships
-              <br />
-              for a brighter tomorrow.
-            </div>
-          </div>
+          <div className="hidden lg:block lg:h-[420px]" aria-hidden="true" />
         </div>
       </Container>
     </section>
