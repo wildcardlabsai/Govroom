@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 
+let markedReady = false;
+
 export function Reveal({
   children,
   className = "",
@@ -15,6 +17,11 @@ export function Reveal({
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    if (!markedReady) {
+      document.documentElement.classList.add("js-reveal-ready");
+      markedReady = true;
+    }
+
     const node = ref.current;
     if (!node) return;
 
