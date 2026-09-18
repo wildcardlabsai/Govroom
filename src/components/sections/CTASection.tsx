@@ -1,6 +1,6 @@
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
-import { AutomotivePanel } from "@/components/ui/AutomotivePanel";
 import { Reveal } from "@/components/ui/Reveal";
 
 export function CTASection({
@@ -20,7 +20,17 @@ export function CTASection({
 }) {
   return (
     <section className="relative overflow-hidden bg-vroom-ink py-24 sm:py-28">
-      <AutomotivePanel className="opacity-70" />
+      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+        <Image
+          src="/images/cta-bg.png"
+          alt=""
+          fill
+          className="object-cover object-right"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-vroom-ink via-vroom-ink/85 to-vroom-ink/30 lg:to-transparent" />
+        <div className="absolute inset-0 bg-vroom-ink/40 md:bg-transparent" />
+      </div>
       <Container className="relative">
         <Reveal className="max-w-xl">
           <p className="mb-4 font-serif text-sm italic text-vroom-green/80">Keep Dealers Moving</p>
